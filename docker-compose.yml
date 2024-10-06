@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+
+  neo-testnet-node:
+    image: neo-testnet-node:latest
+    container_name: neo-testnet-node
+    hostname: neo-testnet-node
+    build:
+      dockerfile: Dockerfile
+      target: production
+      context: .
+    ports:
+      - 20331:20331
+      - 20332:20332
+      - 20333:20333
+      - 20334:20334
+    volumes:
+      - neo-node-data:/neo-node-data
+    command: tail -f /dev/null
+
+
+volumes:
+  neo-node-data:
